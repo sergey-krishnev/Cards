@@ -12,24 +12,25 @@ import { Typography } from '../typography'
 
 import s from './Header.module.scss'
 
-import { ResponseUserType } from 'src/services/types.ts'
+import { useMeQuery } from 'src/services/auth-api.ts'
 
-type HeaderProps = {
-  data?: ResponseUserType | null
-}
-export const Header: FC<HeaderProps> = ({ data }) => {
+export const Header: FC = () => {
   const [dropdownOpen, setDropdownOpen] = React.useState(false)
   const onClickHandler = () => {
     setDropdownOpen(prev => !prev)
   }
 
+  const { data } = useMeQuery()
+
+  console.log(data, 'sign in')
+
   return (
     <div className={s.headerBlock}>
       <div className={s.contentHeader}>
-        <Button as={Link} to="/" variant={'link'} className={s.logo}>
+        <Link to="/">
           <Logo />
-        </Button>
-        {!data && <Button variant={'primary'}>Sign In</Button>}
+        </Link>
+        {!data && <Button>Sign In</Button>}
         {data && (
           <div className={s.avatar_menu}>
             <Typography variant={'subtitle1'} className={s.menu_name}>
