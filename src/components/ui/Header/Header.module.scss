@@ -16,27 +16,12 @@
 
   .contentHeader {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 
     width: 80rem;
     margin: 0 auto;
 
-    .logo {
-      padding: 0;
-
-      &:focus,
-      &:active,
-      &:hover {
-        outline: none;
-      }
-
-      & svg {
-        width: 9.75rem;
-        height: 2.25rem;
-      }
-    }
 
     .avatar_menu {
       display: flex;
